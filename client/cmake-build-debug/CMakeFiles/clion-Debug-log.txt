@@ -1,8 +1,0 @@
-/opt/clion-2024.2.2/bin/cmake/linux/x64/bin/cmake -DCMAKE_BUILD_TYPE=Debug -DCMAKE_MAKE_PROGRAM=/opt/clion-2024.2.2/bin/ninja/linux/x64/ninja -G Ninja -S /home/maks/devel/TestTask/client -B /home/maks/devel/TestTask/client/cmake-build-debug
--- Found Boost: /usr/lib/cmake/Boost-1.86.0/BoostConfig.cmake (found version "1.86.0")
-CMake Error at CMakeLists.txt:11 (target_link_libraries):
-  Cannot specify link libraries for target "TestTask" which is not built by
-  this project.
-
-
--- Configuring incomplete, errors occurred!

@@ -1,3 +1,0 @@
-ninja_dyndep_version = 1.0
-build CMakeFiles/Client.dir/client.cpp.o: dyndep
-

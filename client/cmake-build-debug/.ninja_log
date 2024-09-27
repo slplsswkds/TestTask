@@ -1,8 +1,0 @@
-# ninja log v6
-0	17	1727445874027400812	build.ninja	3b23976f405dadf9
-0	19	1727445876427459053	CMakeFiles/Client.dir/client.cpp.o.ddi	ff7370f22331c166
-19	23	1727445876450792951	CMakeFiles/Client.dir/CXX.dd	98608801c87b0b11
-19	23	1727445876450792951	/home/maks/devel/TestTask/client/cmake-build-debug/CMakeFiles/Client.dir/CXXModules.json	98608801c87b0b11
-19	23	1727445876450792951	CMakeFiles/Client.dir/client.cpp.o.modmap	98608801c87b0b11
-23	41	1727445876450792951	CMakeFiles/Client.dir/client.cpp.o	35949fbf684e36e
-42	70	1727445876470793437	Client	beb955cce0c96d17
