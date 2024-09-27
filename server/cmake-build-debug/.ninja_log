@@ -1,7 +1,7 @@
 # ninja log v6
 1	20	1727445757801245814	CMakeFiles/Server.dir/server.cpp.o.ddi	f277042e87bd9f17
 20	24	1727445757821246299	CMakeFiles/Server.dir/CXX.dd	d203d2bcb01ebd4
-20	24	1727445757821246299	/home/maks/devel/TestTask/server/cmake-build-debug/CMakeFiles/Server.dir/CXXModules.json	d203d2bcb01ebd4
-20	24	1727445757821246299	CMakeFiles/Server.dir/server.cpp.o.modmap	d203d2bcb01ebd4
 24	42	1727445757824579713	CMakeFiles/Server.dir/server.cpp.o	932263dece6093c4
 42	70	1727445757841246785	Server	7dd3023dfd3d2451
+20	24	1727445757821246299	/home/maks/devel/TestTask/server/cmake-build-debug/CMakeFiles/Server.dir/CXXModules.json	d203d2bcb01ebd4
+20	24	1727445757821246299	CMakeFiles/Server.dir/server.cpp.o.modmap	d203d2bcb01ebd4
