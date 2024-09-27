@@ -6,7 +6,9 @@ add_compile_options(-std=gnu++2b -D__cpp_concepts=202002L)
 
 add_executable(Client client.cpp
         CliArgs.cpp
-        CliArgs.h)
+        CliArgs.h
+        CsvHandler.cpp
+        CsvHandler.h)
 
 find_package(CLI11 CONFIG REQUIRED) # cli args parser
 find_package(Boost REQUIRED )       # boost.asio for networking
