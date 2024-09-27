@@ -1,9 +1,0 @@
-{
-  "revision": 0,
-  "rules": [
-    {
-      "primary-output": "server/CMakeFiles/Server.dir/server.cpp.o"
-    }
-  ],
-  "version": 1
-}

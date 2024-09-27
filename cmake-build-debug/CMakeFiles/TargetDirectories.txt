@@ -1,8 +1,0 @@
-/home/maks/devel/TestTask/cmake-build-debug/CMakeFiles/edit_cache.dir
-/home/maks/devel/TestTask/cmake-build-debug/CMakeFiles/rebuild_cache.dir
-/home/maks/devel/TestTask/cmake-build-debug/client/CMakeFiles/Client.dir
-/home/maks/devel/TestTask/cmake-build-debug/client/CMakeFiles/edit_cache.dir
-/home/maks/devel/TestTask/cmake-build-debug/client/CMakeFiles/rebuild_cache.dir
-/home/maks/devel/TestTask/cmake-build-debug/server/CMakeFiles/Server.dir
-/home/maks/devel/TestTask/cmake-build-debug/server/CMakeFiles/edit_cache.dir
-/home/maks/devel/TestTask/cmake-build-debug/server/CMakeFiles/rebuild_cache.dir
