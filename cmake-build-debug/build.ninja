@@ -77,37 +77,17 @@ build rebuild_cache: phony CMakeFiles/rebuild_cache.util
 
 build cmake_object_order_depends_target_Client: phony || .
 
-build client/CMakeFiles/Client.dir/client.cpp.o.ddi: CXX_SCAN__Client_Debug /home/maks/devel/TestTask/client/client.cpp || cmake_object_order_depends_target_Client
-  DEP_FILE = client/CMakeFiles/Client.dir/client.cpp.o.ddi.d
-  DYNDEP_INTERMEDIATE_FILE = client/CMakeFiles/Client.dir/client.cpp.o.ddi
-  FLAGS = -g -std=gnu++23 -fcolor-diagnostics
-  OBJ_FILE = client/CMakeFiles/Client.dir/client.cpp.o
-  PREPROCESSED_OUTPUT_FILE = client/CMakeFiles/Client.dir/client.cpp.o.ddi.i
-
-build client/CMakeFiles/Client.dir/client.cpp.o: CXX_COMPILER__Client_scanned_Debug /home/maks/devel/TestTask/client/client.cpp | client/CMakeFiles/Client.dir/client.cpp.o.modmap || cmake_object_order_depends_target_Client client/CMakeFiles/Client.dir/CXX.dd
+build client/CMakeFiles/Client.dir/client.cpp.o: CXX_COMPILER__Client_unscanned_Debug /home/maks/devel/TestTask/client/client.cpp || cmake_object_order_depends_target_Client
   DEP_FILE = client/CMakeFiles/Client.dir/client.cpp.o.d
-  DYNDEP_MODULE_MAP_FILE = client/CMakeFiles/Client.dir/client.cpp.o.modmap
-  FLAGS = -g -std=gnu++23 -fcolor-diagnostics
+  FLAGS = -g -fcolor-diagnostics -std=gnu++2b -D__cpp_concepts=202002L
   OBJECT_DIR = client/CMakeFiles/Client.dir
   OBJECT_FILE_DIR = client/CMakeFiles/Client.dir
-  dyndep = client/CMakeFiles/Client.dir/CXX.dd
 
-build client/CMakeFiles/Client.dir/CliArgs.cpp.o.ddi: CXX_SCAN__Client_Debug /home/maks/devel/TestTask/client/CliArgs.cpp || cmake_object_order_depends_target_Client
-  DEP_FILE = client/CMakeFiles/Client.dir/CliArgs.cpp.o.ddi.d
-  DYNDEP_INTERMEDIATE_FILE = client/CMakeFiles/Client.dir/CliArgs.cpp.o.ddi
-  FLAGS = -g -std=gnu++23 -fcolor-diagnostics
-  OBJ_FILE = client/CMakeFiles/Client.dir/CliArgs.cpp.o
-  PREPROCESSED_OUTPUT_FILE = client/CMakeFiles/Client.dir/CliArgs.cpp.o.ddi.i
-
-build client/CMakeFiles/Client.dir/CliArgs.cpp.o: CXX_COMPILER__Client_scanned_Debug /home/maks/devel/TestTask/client/CliArgs.cpp | client/CMakeFiles/Client.dir/CliArgs.cpp.o.modmap || cmake_object_order_depends_target_Client client/CMakeFiles/Client.dir/CXX.dd
+build client/CMakeFiles/Client.dir/CliArgs.cpp.o: CXX_COMPILER__Client_unscanned_Debug /home/maks/devel/TestTask/client/CliArgs.cpp || cmake_object_order_depends_target_Client
   DEP_FILE = client/CMakeFiles/Client.dir/CliArgs.cpp.o.d
-  DYNDEP_MODULE_MAP_FILE = client/CMakeFiles/Client.dir/CliArgs.cpp.o.modmap
-  FLAGS = -g -std=gnu++23 -fcolor-diagnostics
+  FLAGS = -g -fcolor-diagnostics -std=gnu++2b -D__cpp_concepts=202002L
   OBJECT_DIR = client/CMakeFiles/Client.dir
   OBJECT_FILE_DIR = client/CMakeFiles/Client.dir
-  dyndep = client/CMakeFiles/Client.dir/CXX.dd
-
-build client/CMakeFiles/Client.dir/CXX.dd | /home/maks/devel/TestTask/cmake-build-debug/client/CMakeFiles/Client.dir/CXXModules.json client/CMakeFiles/Client.dir/client.cpp.o.modmap client/CMakeFiles/Client.dir/CliArgs.cpp.o.modmap: CXX_DYNDEP__Client_Debug client/CMakeFiles/Client.dir/client.cpp.o.ddi client/CMakeFiles/Client.dir/CliArgs.cpp.o.ddi | /home/maks/devel/TestTask/cmake-build-debug/client/CMakeFiles/Client.dir/CXXDependInfo.json
 
 
 # =============================================================================

@@ -1,7 +1,8 @@
 cmake_minimum_required(VERSION 3.29)
 project(Client)
 
-set(CMAKE_CXX_STANDARD 23)
+#set(CMAKE_CXX_STANDARD 23)
+add_compile_options(-std=gnu++2b -D__cpp_concepts=202002L)
 
 add_executable(Client client.cpp
         CliArgs.cpp
