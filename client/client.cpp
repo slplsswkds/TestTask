@@ -10,22 +10,17 @@ int main(const int argc, const char **argv) {
     CliArgs args;
     args.parse_cli_args(argc, argv);
 
-    std::cout << args.getFilename() << std::endl; // debug message
-    std::cout << args.getTargetIp() << std::endl; // debug message
-    std::cout << args.getTargetPort() << std::endl; // debug message
+    const auto csvFileResult = CsvHandler::createCsv(); // create csv
 
-    const auto csvFile = CsvHandler::createCsv();
-
-    if (!csvFile.has_value()) {
-        auto err = csvFile.error();
-        std::cerr << "failed to create CSV" << std::endl;
-        // HANDLE ERROR !!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!1
+    if (!csvFileResult.has_value()) {
+        auto err = csvFileResult.error();
+        std::cerr << err << std::endl;
+        return 1;
     }
 
-    if (auto res = CsvHandler::saveCsv(csvFile.value(), args.getFilename()); !res.has_value()) {
+    if (auto res = CsvHandler::saveCsv(csvFileResult.value(), args.getFilename()); !res.has_value()) {
         auto err = res.error();
-        std::cerr << "failed to save CSV" << std::endl;
-        // HANDLE ERROR !!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!1
+        std::cerr << std::format("failed to save CSV: {}", err.what()) << std::endl;
     }
 
     return 0;

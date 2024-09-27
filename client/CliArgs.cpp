@@ -1,7 +1,3 @@
-//
-// Created by maks on 9/27/24.
-//
-
 #include "CliArgs.h"
 
 int CliArgs::parse_cli_args(int argc, const char **argv) {
