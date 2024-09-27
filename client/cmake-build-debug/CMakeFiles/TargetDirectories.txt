@@ -1,0 +1,3 @@
+/home/maks/devel/TestTask/client/cmake-build-debug/CMakeFiles/Client.dir
+/home/maks/devel/TestTask/client/cmake-build-debug/CMakeFiles/edit_cache.dir
+/home/maks/devel/TestTask/client/cmake-build-debug/CMakeFiles/rebuild_cache.dir
