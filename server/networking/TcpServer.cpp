@@ -19,7 +19,6 @@ void TcpServer::run_iterative() {
             try {
                 std::string message = "Hello from iterative TCP server\n";
                 boost::system::error_code ignored_error;
-                // Надсилаємо повідомлення клієнту
                 boost::asio::write(socket, boost::asio::buffer(message), ignored_error);
                 std::cout << "Sent message to client" << std::endl;
             } catch (const std::exception &e) {
