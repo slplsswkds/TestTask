@@ -13,7 +13,7 @@ public:
     static auto genRandDataString() -> std::string;
 
     static auto saveCsv(rapidcsv::Document csvFile,
-                        const std::filesystem::path &path) -> std::expected<void, std::exception>;
+                        const std::filesystem::path &path) -> std::expected<void, std::string>;
 };
 
 #endif //CSVHANDLER_H

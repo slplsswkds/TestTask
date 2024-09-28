@@ -52,11 +52,11 @@ auto CsvHandler::genRandDataString() -> std::string {
 }
 
 auto CsvHandler::saveCsv(rapidcsv::Document csvFile,
-                         const std::filesystem::path &path) -> std::expected<void, std::exception> {
+                         const std::filesystem::path &path) -> std::expected<void, std::string> {
     try {
         csvFile.Save(path.filename());
     } catch (std::exception &e) {
-        return std::unexpected<std::exception>(e);
+        return std::unexpected(e.what());
     }
     return {};
 }
