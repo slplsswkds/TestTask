@@ -1,10 +1,9 @@
 #include "TcpServer.h"
 
-#include <string>
 #include <iostream>
 #include "ClientHandler.h"
 
-TcpServer::TcpServer(const unsigned short port)
+TcpServer::TcpServer(uint16_t port)
     : acceptor_(io_context_, boost::asio::ip::tcp::endpoint(boost::asio::ip::tcp::v4(), port)) {
 }
 

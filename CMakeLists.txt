@@ -12,7 +12,9 @@ add_executable(Client client/client.cpp
         client/csv_utils/CsvHandler.cpp
         client/csv_utils/CsvHandler.h
         client/networking/TcpClient.cpp
-        client/networking/TcpClient.h)
+        client/networking/TcpClient.h
+        csvRxTx/CsvRxTx.cpp
+        csvRxTx/CsvRxTx.h)
 
 add_executable(Server server/server.cpp
         server/networking/TcpServer.cpp

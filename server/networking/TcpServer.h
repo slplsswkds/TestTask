@@ -6,7 +6,7 @@
 
 class TcpServer {
 public:
-    explicit TcpServer(unsigned short port);
+    explicit TcpServer(uint16_t port);
 
     void run_iterative(); // run iterative server
 

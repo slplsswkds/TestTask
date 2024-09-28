@@ -27,13 +27,7 @@ int main(const int argc, const char **argv) {
         std::cerr << std::format("failed to save CSV: {}", err) << std::endl;
     }
 
-    // endpoint to the server
-    auto endpoint = boost::asio::ip::tcp::endpoint(
-        boost::asio::ip::address::from_string(args.getTargetIp()),
-        args.getTargetPort()
-    );
-
-    auto client = std::make_unique<TcpClient>(endpoint);
+    const auto client = std::make_unique<TcpClient>(args.getTargetIp(), args.getTargetPort());
     if (!client->connect()) {
         std::cerr << "failed to connect to the server" << std::endl;
     }

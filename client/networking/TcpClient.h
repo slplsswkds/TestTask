@@ -6,7 +6,7 @@
 class TcpClient {
 public:
     /// Class constructor
-    explicit TcpClient(const boost::asio::ip::tcp::endpoint &endpoint);
+    explicit TcpClient(const std::string &host, uint16_t port);
 
     /// connect to the server
     bool connect();
