@@ -14,7 +14,8 @@ int main() {
         while (true) {
             tcp::socket socket(io_context);
             acceptor.accept(socket);
-            std::string message = "Hello from iterative server";
+            std::string message = "Hello from iterative server\n";
+            std::cout << "new connection" << std::endl; // should be normal logging
             boost::system::error_code ignored_error;
             boost::asio::write(socket, boost::asio::buffer(message), ignored_error);
         }

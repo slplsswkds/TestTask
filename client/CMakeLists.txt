@@ -8,7 +8,9 @@ add_executable(Client client.cpp
         CliArgs.cpp
         CliArgs.h
         CsvHandler.cpp
-        CsvHandler.h)
+        CsvHandler.h
+        TcpClient.cpp
+        TcpClient.h)
 
 find_package(CLI11 CONFIG REQUIRED) # cli args parser
 find_package(Boost REQUIRED )       # boost.asio for networking
