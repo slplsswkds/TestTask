@@ -11,8 +11,6 @@ public:
     void run_iterative(); // run iterative server
 
 private:
-    void handleClient(boost::asio::ip::tcp::socket socket);
-
     boost::asio::io_context io_context_;
     boost::asio::ip::tcp::acceptor acceptor_;
 };
