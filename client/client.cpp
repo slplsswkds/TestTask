@@ -2,9 +2,9 @@
 #include <boost/asio.hpp>
 
 #include "../rapidcsv/rapidcsv.h"
-#include "CliArgs.h"
-#include "CsvHandler.h"
-#include "TcpClient.h"
+#include "cli/CliArgs.h"
+#include "csv_utils/CsvHandler.h"
+#include "networking/TcpClient.h"
 
 int main(const int argc, const char **argv) {
     CliArgs args;
