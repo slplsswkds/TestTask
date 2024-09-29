@@ -3,6 +3,7 @@
 #include "boost/asio.hpp"
 #include <nlohmann/json.hpp>
 #include "../rapidcsv/rapidcsv.h"
+#include <optional>
 
 class TcpRxTx {
 protected:
@@ -27,4 +28,7 @@ public:
 
     std::string fileName_;
     rapidcsv::Document csvDoc_;
+
+    std::optional<uint> changed_ = std::nullopt;
+    std::optional<uint> deleted_ = std::nullopt;
 };

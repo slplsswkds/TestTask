@@ -80,6 +80,11 @@ nlohmann::json CsvWrapper::serializeToJson() const {
         csvData.push_back(rowData);
     }
 
+    if (changed_.has_value() && deleted_.has_value()) {
+        jsonData["changes"] = changed_.value();
+        jsonData["deletes"] = changed_.value();
+    }
+
     jsonData["csvData"] = csvData;
     return jsonData;
 }
@@ -106,6 +111,17 @@ CsvWrapper CsvWrapper::deserializeFromJson(const nlohmann::json &jsonData) {
     rapidcsv::Document doc(csvInputStream, rapidcsv::LabelParams(-1, -1)); // Якщо немає заголовків
 
     CsvWrapper wrapper(fileName, doc);
+
+    try {
+        const uint changes = jsonData.at("changes");
+        const uint deletes = jsonData.at("deletes");
+
+        wrapper.changed_ = changes;
+        wrapper.deleted_ = deletes;
+    } catch (const std::exception &e) {
+        // json have not this fields
+    }
+
 
     return wrapper;
 }

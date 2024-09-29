@@ -38,37 +38,16 @@ int main(const int argc, const char **argv) {
     client.transmitJson(csvWrapper.serializeToJson());
 
     auto responseJson = client.receiveJson(); // get edited CSV file and changelist
-    const size_t changes = responseJson.at("changes");
-    const size_t deletes = responseJson.at("deletes");
+    auto wrapper = CsvWrapper::deserializeFromJson(responseJson);
 
-    std::cout << "changes: " << changes << std::endl;
-    std::cout << "deletes: " << deletes << std::endl;
+    // save received CSV file
+    wrapper.csvDoc_.Save(std::format("received_{}", wrapper.fileName_));
 
-    //-------------------------------------------------------- parse and save received Csv     !!!!!! (code duplication)
-
-    std::cout << "----------------------" << std::endl;
-    const std::string fileName = responseJson.at("fileName").get<std::string>();
-
-    std::ostringstream csvStream; // store csv data
-
-    // fill csv data
-    const auto &csvData = responseJson.at("csvData");
-    for (const auto &row: csvData) {
-        for (size_t col = 0; col < row.size(); ++col) {
-            csvStream << row[col];
-            if (col < row.size() - 1) {
-                csvStream << ",";
-            }
-        }
-        csvStream << "\n";
+    // Print changelist
+    if (wrapper.changed_.has_value() && wrapper.deleted_.has_value()) {
+        std::cout << "changes: " << wrapper.changed_.value() << std::endl;
+        std::cout << "deletes: " << wrapper.deleted_.value() << std::endl;
     }
-
-    // move string data to Document
-    std::istringstream csvInputStream(csvStream.str());
-    rapidcsv::Document doc(csvInputStream, rapidcsv::LabelParams(-1, -1)); // no-headers
-
-    doc.Save(std::format("{}_received", fileName));
-    //--------------------------------------------------------
 
     client.close();
 

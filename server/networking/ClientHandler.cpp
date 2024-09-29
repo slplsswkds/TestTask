@@ -20,9 +20,10 @@ void ClientHandler::handle() {
 
     wrapper.csvDoc_ = this->docCsv_; // edited file
 
+    wrapper.changed_ = changelist.changes_;
+    wrapper.deleted_ = changelist.deletes_;
+
     auto jsonData = wrapper.serializeToJson();
-    jsonData["changes"] = changelist.changes_;
-    jsonData["deletes"] = changelist.deletes_;
 
     transmitJson(jsonData);
 }
