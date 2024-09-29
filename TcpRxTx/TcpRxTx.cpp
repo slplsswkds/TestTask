@@ -82,7 +82,7 @@ nlohmann::json CsvWrapper::serializeToJson() const {
 
     if (changed_.has_value() && deleted_.has_value()) {
         jsonData["changes"] = changed_.value();
-        jsonData["deletes"] = changed_.value();
+        jsonData["deletes"] = deleted_.value();
     }
 
     jsonData["csvData"] = csvData;
