@@ -15,8 +15,12 @@ void TcpServer::run_iterative() {
             acceptor_.accept(socket);
 
             // handle client
-            auto handler = ClientHandler(std::move(socket));
-            handler.handle();
+            try {
+                auto handler = ClientHandler(std::move(socket));
+                handler.handle();
+            } catch (const std::exception &e) {
+                std::cerr << "Failed to handle client: " << e.what() << std::endl;
+            }
         }
     } catch (const std::exception &e) {
         std::cerr << "Server error: " << e.what() << std::endl;

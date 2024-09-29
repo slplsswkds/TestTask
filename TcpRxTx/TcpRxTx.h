@@ -25,7 +25,6 @@ public:
 
     static CsvWrapper deserializeFromJson(const nlohmann::json &jsonData);
 
-private:
     std::string fileName_;
     rapidcsv::Document csvDoc_;
 };

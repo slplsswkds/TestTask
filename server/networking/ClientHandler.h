@@ -5,19 +5,27 @@
 #include "../../TcpRxTx/TcpRxTx.h"
 #include "../../rapidcsv/rapidcsv.h"
 
+class Changelist {
+public:
+    Changelist(size_t changes, size_t deletes);
+
+    size_t changes_; /// count changes in the file
+    size_t deletes_; /// count deletes in the file
+};
 
 class ClientHandler : public TcpRxTx {
 public:
-    ClientHandler(boost::asio::ip::tcp::socket socket);
+    explicit ClientHandler(boost::asio::ip::tcp::socket socket);
 
     void handle();
 
 private:
     rapidcsv::Document docCsv_;
 
-    void editFile(); // edits the resulting file, saves it in the file field, and returns changelist
+    auto editFile() -> Changelist;
+
+    // edits the resulting file, saves it in the file field, and returns changelist
     void sendChangelist(); // send changelist in json format
 };
-
 
 #endif //CLIENTHANDLER_H
