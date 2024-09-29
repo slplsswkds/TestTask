@@ -22,10 +22,8 @@ public:
 private:
     rapidcsv::Document docCsv_;
 
-    auto editFile() -> Changelist;
-
     // edits the resulting file, saves it in the file field, and returns changelist
-    void sendChangelist(); // send changelist in json format
+    auto editFile() -> Changelist;
 };
 
 #endif //CLIENTHANDLER_H
