@@ -32,11 +32,19 @@ int main(const int argc, const char **argv) {
     }
 
     auto client = TcpConnection(std::move(socket));
-    client.setCsvDoc(csvDoc);
-    client.saveCsvFile(args.getFilename().filename());
-    client.transmitCsv();
-    client.receiveCsv();
-    client.saveCsvFile("received_file.csv");
+
+    nlohmann::json request;
+    request["name"] = "Client";
+    request["message"] = "Hello from Client!";
+    std::string request_data = request.dump();
+
+    client.transmitJson(request);
+
+    // client.setCsvDoc(csvDoc);
+    // client.saveCsvFile(args.getFilename().filename());
+    // // client.transmitCsv();
+    // // client.receiveCsv();
+    // client.saveCsvFile("received_file.csv");
     client.close();
 
     return 0;

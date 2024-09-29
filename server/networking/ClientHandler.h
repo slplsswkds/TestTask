@@ -2,18 +2,19 @@
 #define CLIENTHANDLER_H
 
 #include <boost/asio.hpp>
-#include "../../rapidcsv/rapidcsv.h"
-#include "../../CsvRxTx/CsvRxTx.h"
+#include "../../TcpRxTx/TcpRxTx.h"
 
 
-class ClientHandler : public CsvRxTx {
+class ClientHandler : public TcpRxTx {
 public:
     ClientHandler(boost::asio::ip::tcp::socket socket);
 
     void handle();
 
 private:
-    void editFile(); // edit received file
+    rapidcsv::Document docCsv_;
+
+    void editFile(); // edits the resulting file, saves it in the file field, and returns changelist
     void sendChangelist(); // send changelist in json format
 };
 

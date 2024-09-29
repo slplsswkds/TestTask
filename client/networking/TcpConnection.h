@@ -4,11 +4,11 @@
 #include <boost/asio.hpp>
 
 #include "../../rapidcsv/rapidcsv.h"
-#include "../../CsvRxTx/CsvRxTx.h"
+#include "../../TcpRxTx/TcpRxTx.h"
 
 boost::asio::ip::tcp::socket connect(const std::string &host, uint16_t port);
 
-class TcpConnection : public CsvRxTx {
+class TcpConnection : public TcpRxTx {
 public:
     /// Class constructor
     TcpConnection(boost::asio::ip::tcp::socket socket);
@@ -22,6 +22,9 @@ public:
 
     /// Close the connection
     void close();
+
+private:
+    rapidcsv::Document docCsv_;
 };
 
 #endif //TCPCONNECTION_H

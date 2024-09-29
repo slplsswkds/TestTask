@@ -12,7 +12,7 @@ boost::asio::ip::tcp::socket connect(const std::string &host, const uint16_t por
 }
 
 TcpConnection::TcpConnection(boost::asio::ip::tcp::socket socket)
-    : CsvRxTx(std::move(socket)) {
+    : TcpRxTx(std::move(socket)) {
 }
 
 std::string TcpConnection::receiveMessage() {
