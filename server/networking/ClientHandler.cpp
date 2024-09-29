@@ -12,20 +12,20 @@ ClientHandler::ClientHandler(boost::asio::ip::tcp::socket socket)
 }
 
 void ClientHandler::handle() {
-    const auto json = receiveJson();
-    auto wrapper = CsvWrapper::deserializeFromJson(json);
+    // receive file from client
+    auto wrapper = CsvWrapper::deserializeFromJson(receiveJson());
     this->docCsv_ = wrapper.csvDoc_;
 
+    // edit file
     auto changelist = editFile();
 
-    wrapper.csvDoc_ = this->docCsv_; // edited file
-
+    // move edited file and counters value
+    wrapper.csvDoc_ = this->docCsv_;
     wrapper.changed_ = changelist.changes_;
     wrapper.deleted_ = changelist.deletes_;
 
-    auto jsonData = wrapper.serializeToJson();
-
-    transmitJson(jsonData);
+    // transmit edited file to the server
+    transmitJson(wrapper.serializeToJson());
 }
 
 Changelist ClientHandler::editFile() {

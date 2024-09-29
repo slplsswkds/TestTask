@@ -12,19 +12,11 @@ int main(const int argc, const char **argv) {
         return 1; // exit if an error occurred while parsing the CLI arguments ar passed --help message
     }
 
-    rapidcsv::Document csvDoc;
-    try {
-        csvDoc = CsvGenerator::createCsv();
-    } catch (const std::exception &e) {
-        auto errorMsg = std::format("An error occurred while creating the CSV file: {}", e.what());
-        return 0;
-    }
+    // generating CSV file
+    auto csvDocGenerated = CsvGenerator::createCsv();
 
-    try {
-        csvDoc.Save(args.getFilename());
-    } catch (const std::exception &e) {
-        auto errorMsg = std::format("Failed to save SVG file: {}", e.what());
-    }
+    // Saving CSV file
+    csvDocGenerated.Save(args.getFilename());
 
     auto socket = connect(args.getTargetIp(), args.getTargetPort());
     if (!socket.is_open()) {
@@ -33,14 +25,15 @@ int main(const int argc, const char **argv) {
     }
 
     auto client = TcpConnection(std::move(socket));
+    auto csvWrapper = CsvWrapper(args.getFilename(), csvDocGenerated); // for serialize/deserialize JSON messages
 
-    auto csvWrapper = CsvWrapper(args.getFilename(), csvDoc);
+    // send the file to the server
     client.transmitJson(csvWrapper.serializeToJson());
 
-    auto responseJson = client.receiveJson(); // get edited CSV file and changelist
-    auto wrapper = CsvWrapper::deserializeFromJson(responseJson);
+    // Receive the file edited by the server
+    auto wrapper = CsvWrapper::deserializeFromJson(client.receiveJson());
 
-    // save received CSV file
+    // save received CSV file to the disk
     wrapper.csvDoc_.Save(std::format("received_{}", wrapper.fileName_));
 
     // Print changelist
