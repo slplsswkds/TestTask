@@ -1,7 +1,7 @@
 #include "CsvRxTx.h"
 
-CsvRxTx::CsvRxTx(boost::asio::ip::tcp::socket socket, const rapidcsv::Document &docCsv)
-    : socket_(std::move(socket)), docCsv_(docCsv) {}
+CsvRxTx::CsvRxTx(boost::asio::ip::tcp::socket socket) : socket_(std::move(socket)) {
+}
 
 void CsvRxTx::transmitCsv() {
     try {
@@ -33,4 +33,3 @@ void CsvRxTx::receiveCsv() {
 
     std::cout << "File received successfully. Total size: " << fileData.str().size() << " bytes." << std::endl;
 }
-

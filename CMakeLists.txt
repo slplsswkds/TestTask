@@ -1,7 +1,7 @@
 cmake_minimum_required(VERSION 3.29)
 project(TestTask)
 
-add_compile_options(-std=gnu++2b -D__cpp_concepts=202002L)
+set (CMAKE_CXX_STANDARD 23)
 
 find_package(CLI11 CONFIG REQUIRED) # cli args parser
 find_package(Boost REQUIRED )       # boost.asio for networking
@@ -9,10 +9,10 @@ find_package(Boost REQUIRED )       # boost.asio for networking
 add_executable(Client client/client.cpp
         client/cli/CliArgs.cpp
         client/cli/CliArgs.h
-        client/csv_utils/CsvHandler.cpp
-        client/csv_utils/CsvHandler.h
-        client/networking/TcpClient.cpp
-        client/networking/TcpClient.h
+        client/csv_utils/CsvGenerator.cpp
+        client/csv_utils/CsvGenerator.h
+        client/networking/TcpConnection.cpp
+        client/networking/TcpConnection.h
         CsvRxTx/CsvRxTx.cpp
         CsvRxTx/CsvRxTx.h)
 

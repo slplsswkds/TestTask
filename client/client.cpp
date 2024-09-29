@@ -1,10 +1,9 @@
-#include <expected>
 #include <boost/asio.hpp>
 
 #include "../rapidcsv/rapidcsv.h"
 #include "cli/CliArgs.h"
-#include "csv_utils/CsvHandler.h"
-#include "networking/TcpClient.h"
+#include "csv_utils/CsvGenerator.h"
+#include "networking/TcpConnection.h"
 
 int main(const int argc, const char **argv) {
     CliArgs args;
@@ -12,30 +11,31 @@ int main(const int argc, const char **argv) {
         return 1; // exit if an error occurred while parsing the CLI arguments ar passed --help message
     }
 
-    const auto csvFileResult = CsvHandler::createCsv(); // create csv
+    rapidcsv::Document csvDoc;
+    try {
+        csvDoc = CsvGenerator::createCsv();
+    } catch (const std::exception &e) {
+        auto errorMsg = std::format("An error occurred while creating the CSV file: {}", e.what());
+        return 0;
+    }
 
-    // rewrite error handling
-    if (!csvFileResult.has_value()) {
-        auto err = csvFileResult.error();
-        std::cerr << std::format("failed to create CSV: {}", err) << std::endl;
+    try {
+        csvDoc.Save(args.getFilename());
+    } catch (const std::exception &e) {
+        auto errorMsg = std::format("Failed to save SVG file: {}", e.what());
+    }
+
+    auto socket = connect(args.getTargetIp(), args.getTargetPort());
+    if (!socket.is_open()) {
+        std::cerr << "Cannot estable connection with server" << std::endl;
         return 1;
     }
 
-    // rewrite error handling
-    if (auto res = CsvHandler::saveCsv(csvFileResult.value(), args.getFilename()); !res.has_value()) {
-        auto err = res.error();
-        std::cerr << std::format("failed to save CSV: {}", err) << std::endl;
-    }
-
-    const auto client = std::make_unique<TcpClient>(args.getTargetIp(), args.getTargetPort());
-    if (!client->connect()) {
-        std::cerr << "failed to connect to the server" << std::endl;
-    }
-
-    const std::string response = client->receiveMessage();
-    std::cout << "Received: " << response << std::endl;
-
-    client->close(); // close the connection
+    auto client = TcpConnection(std::move(socket));
+    client.setCsvDoc(csvDoc);
+    client.transmitCsv();
+    client.receiveCsv();
+    client.close();
 
     return 0;
 }
