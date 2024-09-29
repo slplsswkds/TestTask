@@ -18,6 +18,8 @@ public:
 
     void setCsvDoc(const rapidcsv::Document &doc);
 
+    void saveCsvFile(std::string filename);
+
     /// Close the connection
     void close();
 };

@@ -12,8 +12,6 @@ protected:
     rapidcsv::Document docCsv_;
 
 public:
-    CsvRxTx(boost::asio::ip::tcp::socket socket, const rapidcsv::Document &docCsv);
-
     void transmitCsv();
 
     void receiveCsv();

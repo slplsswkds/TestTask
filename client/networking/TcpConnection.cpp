@@ -33,6 +33,10 @@ void TcpConnection::setCsvDoc(const rapidcsv::Document &doc) {
     docCsv_ = doc;
 }
 
+void TcpConnection::saveCsvFile(std::string filename) {
+    docCsv_.Save(filename);
+}
+
 void TcpConnection::close() {
     try {
         socket_.close();
