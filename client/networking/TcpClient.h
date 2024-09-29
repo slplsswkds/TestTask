@@ -3,6 +3,9 @@
 
 #include <boost/asio.hpp>
 
+#include "../../rapidcsv/rapidcsv.h"
+#include "../../CsvRxTx/CsvRxTx.h"
+
 class TcpClient {
 public:
     /// Class constructor
@@ -23,6 +26,7 @@ public:
 private:
     boost::asio::io_context io_context_;
     boost::asio::ip::tcp::socket socket_;
+    rapidcsv::Document file_;
     boost::asio::ip::tcp::endpoint endpoint_;
 };
 

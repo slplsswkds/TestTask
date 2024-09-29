@@ -3,20 +3,17 @@
 
 #include <boost/asio.hpp>
 #include "../../rapidcsv/rapidcsv.h"
+#include "../../CsvRxTx/CsvRxTx.h"
 
-class ClientHandler {
+
+class ClientHandler : public CsvRxTx {
 public:
     ClientHandler(boost::asio::ip::tcp::socket socket);
+
     void handle();
 
 private:
-    boost::asio::ip::tcp::socket socket_;
-
-    rapidcsv::Document file_;
-
-    void receiveFile(); // Accept file from server
     void editFile(); // edit received file
-    void sendFile(); // send modified file
     void sendChangelist(); // send changelist in json format
 };
 

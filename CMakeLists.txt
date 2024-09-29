@@ -13,14 +13,16 @@ add_executable(Client client/client.cpp
         client/csv_utils/CsvHandler.h
         client/networking/TcpClient.cpp
         client/networking/TcpClient.h
-        csvRxTx/CsvRxTx.cpp
-        csvRxTx/CsvRxTx.h)
+        CsvRxTx/CsvRxTx.cpp
+        CsvRxTx/CsvRxTx.h)
 
 add_executable(Server server/server.cpp
         server/networking/TcpServer.cpp
         server/networking/TcpServer.h
         server/networking/ClientHandler.cpp
         server/networking/ClientHandler.h
+        CsvRxTx/CsvRxTx.cpp
+        CsvRxTx/CsvRxTx.h
 )
 
 target_link_libraries(Client CLI11::CLI11 stdc++)
