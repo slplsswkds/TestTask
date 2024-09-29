@@ -3,6 +3,7 @@
 
 #include <boost/asio.hpp>
 #include "../../TcpRxTx/TcpRxTx.h"
+#include "../../rapidcsv/rapidcsv.h"
 
 
 class ClientHandler : public TcpRxTx {

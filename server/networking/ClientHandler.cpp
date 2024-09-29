@@ -7,11 +7,8 @@ ClientHandler::ClientHandler(boost::asio::ip::tcp::socket socket)
 }
 
 void ClientHandler::handle() {
-    auto json = receiveJson();
-    // receiveCsv();
-    // editFile();
-    // transmitCsv();
-    // sendChangelist();
+    const auto json = receiveJson();
+    auto wrapper = CsvWrapper::deserializeFromJson(json);
 }
 
 void ClientHandler::editFile() {
