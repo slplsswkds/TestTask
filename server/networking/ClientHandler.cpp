@@ -39,12 +39,14 @@ Changelist ClientHandler::editFile() {
 
     const std::regex vowelRegex("^[aeiouyAEIOUY]"); // A regular expression to check if a string starts with a vowel
 
-    for (const int row: iota_view(0, static_cast<int>(rowCount))) {
+    for (const int row: iota_view(0, static_cast<int>(rowCount)) | std::views::reverse) {
         for (const int col: iota_view(0, static_cast<int>(columnCount))) {
             auto cellVal = docCsv_.GetCell<std::string>(col, row);
 
             if (std::regex_search(cellVal, vowelRegex)) {
+                docCsv_.RemoveRow(row);
                 deletes++;
+                break; // go to the next row
             } else {
                 // Replace odd numbers with #
                 std::ranges::transform(cellVal, cellVal.begin(), [&](const char c) {
